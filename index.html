@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry... 🥺</title>
+    <!-- Fonts for cute design and handwritten letter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;600;700&family=Playpen+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- Floating Hearts Background Background -->
+    <div id="heart-bg" class="heart-bg"></div>
+
+    <div class="main-container">
+        <!-- SCREEN 1: First Apology Page -->
+        <div id="first-screen" class="card intro-card active">
+            <h1 class="intro-title">Sorry yarr ho gyi galti ...</h1>
+
+            <div class="gif-container">
+                <!-- Apologizing cute Peach cat / bear gif -->
+                <img src="https://media.tenor.com/XwnmBt4nEigAAAAC/peach-goma-sorry.gif" alt="Cute apologizing bear"
+                    class="apology-gif">
+            </div>
+
+            <p class="intro-subtitle">Ab maaf bhi kardo <span class="highlight-red">please .... 🥺</span></p>
+
+            <button id="click-me-btn" class="btn btn-primary pulse-btn">Click Me</button>
+        </div>
+
+        <!-- SCREEN 2: Envelope Transition -->
+        <div id="envelope-screen" class="envelope-container hidden">
+            <div class="envelope-wrapper">
+                <div class="envelope">
+                    <div class="flap"></div>
+                    <div class="pocket"></div>
+                    <div class="letter-preview">
+                        <div class="letter-line line-1"></div>
+                        <div class="letter-line line-2"></div>
+                        <div class="letter-line line-3"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="envelope-instruction">Click the envelope to open my letter 💌</p>
+        </div>
+
+        <!-- SCREEN 3: Detailed Apology Letter -->
+        <div id="letter-screen" class="letter-container hidden">
+            <div class="letter-paper">
+                <div class="letter-header">
+                    <h2 class="letter-title">I'm Sorry</h2>
+
+                    <!-- SVG Hearts: Broken Heart and Whole Heart Diagram -->
+                    <div class="hearts-svg-container">
+                        <svg viewBox="0 0 400 150" class="hearts-svg">
+                            <!-- Left broken heart -->
+                            <g class="broken-heart-group">
+                                <!-- Left half -->
+                                <path
+                                    d="M 85,45 C 85,25 65,20 50,35 C 35,20 15,25 15,45 C 15,65 35,80 50,95 C 50.8,94.2 51.5,93.5 52,93"
+                                    fill="#ff5a8f" stroke="#e02868" stroke-width="2.5" />
+                                <!-- Right half, slightly separated/cracked -->
+                                <path
+                                    d="M 52,93 C 65,80 85,65 85,45 C 85,45 84,43 83,43 L 73,50 L 63,40 L 53,53 L 49,43 L 52,93"
+                                    fill="#ff5a8f" stroke="#e02868" stroke-width="2.5" />
+                                <!-- Text annotation under broken heart -->
+                                <text x="50" y="125" class="svg-annotation" text-anchor="middle">I want to turn
+                                    this</text>
+                            </g>
+
+                            <!-- Curved arrow with pointer -->
+                            <path d="M 120,65 Q 200,30 280,65" fill="none" stroke="#666" stroke-width="2"
+                                stroke-dasharray="5 5" class="arrow-path" />
+                            <polygon points="280,65 272,58 274,68" fill="#666" />
+                            <text x="200" y="90" class="svg-annotation italic-anno" text-anchor="middle">into
+                                this</text>
+
+                            <!-- Right whole heart -->
+                            <g class="whole-heart-group">
+                                <path
+                                    d="M 350,45 C 350,25 330,20 315,35 C 300,20 280,25 280,45 C 280,65 300,80 315,95 C 330,80 350,65 350,45 Z"
+                                    fill="#ff2e7e" stroke="#e02868" stroke-width="2.5" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Letter Content with Poem -->
+                <div class="letter-body">
+                    <div class="poem-container">
+                        <p class="poem-line">I can't change what has happened,</p>
+                        <p class="poem-line">I only wish I could,</p>
+                        <p class="poem-line">Please let me make it up to you,</p>
+                        <p class="poem-line">Here's why I think you should ...</p>
+
+                        <p class="poem-line spacer-line"></p>
+
+                        <p class="poem-line">I know I did the wrong thing,</p>
+                        <p class="poem-line">I know it wasn't fair,</p>
+                        <p class="poem-line">But I never meant to hurt you,</p>
+                        <p class="poem-line">And now I have, it's hard to bear.</p>
+
+                        <p class="poem-line spacer-line"></p>
+
+                        <p class="poem-line">What we have is special,</p>
+                        <p class="poem-line">Far too great to throw away,</p>
+                        <p class="poem-line">And I promise to earn your trust once more,</p>
+                        <p class="poem-line">For forever and a day.</p>
+                    </div>
+                </div>
+
+                <!-- Final Action/Forgiveness inside the letter card -->
+                <div class="forgive-section hidden-element">
+                    <p class="forgive-question">Will you forgive me? 🥺</p>
+                    <div class="btn-group">
+                        <button id="yes-btn" class="btn btn-yes">Yes</button>
+                        <button id="no-btn" class="btn btn-no">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 4: Happy/Success Screen -->
+        <div id="success-screen" class="card success-card hidden">
+            <h1 class="success-title">Yay! Thank You! ❤️</h1>
+
+            <div class="gif-container">
+                <!-- Happy cute bear hugging/celebrating gif -->
+                <img src="/happy.gif" alt="Happy bear hug" class="apology-gif">
+            </div>
+
+            <p class="success-subtitle">I promise to make you the happiest ever! 🥰</p>
+            <p class="success-footer">Forever and a day. ❤️</p>
+        </div>
+    </div>
+
+    <!-- Background Music (Optional, starts muted to avoid policy block, can be unmuted) -->
+    <div class="music-controller" id="music-controller">
+        <button id="music-toggle" class="music-btn" aria-label="Play/Pause Background Music">🎵</button>
+        <!-- Royalty-free soft acoustic/piano audio -->
+        <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    </div>
+
+    <!-- Core Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
